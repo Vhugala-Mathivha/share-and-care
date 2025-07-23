@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Share and Care Collective</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        #storyForm,
+        #readSection,
+        #adviceSection {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .question-card,
+        .reply-card {
+            background: #eee;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .answered {
+            border-left: 5px solid green;
+            background-color: #e0ffe0;
+        }
+
+        .actions {
+            margin-top: 8px;
+        }
+
+        button {
+            margin-right: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Share and Care Collective</h1>
+
+    <div class="section">
+        <button id="shareStoryCard">Share Your Story</button>
+        <div id="storyForm">
+            <p><em>Story form here (simplified)</em></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <button id="readStoryCard">Read Stories</button>
+        <div id="readSection">
+            <p><em>Story reading section here (simplified)</em></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <button id="adviseCard">Ask for Advice</button>
+        <div id="adviceSection">
+            <form id="questionForm">
+                <textarea id="questionInput" required placeholder="Ask your question anonymously"></textarea><br />
+                <button type="submit">Submit Question</button>
+            </form>
+            <div id="questionsList"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Toggle share story form
+            const shareCard = document.getElementById("shareStoryCard");
+            const storyForm = document.getElementById("storyForm");
+            shareCard.addEventListener("click", () => {
+                storyForm.style.display = storyForm.style.display === "block" ? "none" : "block";
+            });
+
+            // Toggle read stories
+            const readCard = document.getElementById("readStoryCard");
+            const readSection = document.getElementById("readSection");
+            readCard.addEventListener("click", () => {
+                readSection.style.display = readSection.style.display === "block" ? "none" : "block";
+            });
+
+            // Ask for advice variables
+            const adviseCard = document.getElementById("adviseCard");
+            const adviceSection = document.getElementById("adviceSection");
+            const questionForm = document.getElementById("questionForm");
+            const questionInput = document.getElementById("questionInput");
+            const questionsList = document.getElementById("questionsList");
+
+            let questions = [];
+            let questionIdCounter = 1;
+
+            adviseCard.addEventListener("click", () => {
+                adviceSection.style.display = adviceSection.style.display === "block" ? "none" : "block";
+            });
+
+            questionForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const questionText = questionInput.value.trim();
+                if (!questionText) return;
+
+                questions.push({
+                    id: questionIdCounter++,
+                    text: questionText,
+                    responses: []
+                });
+                questionInput.value = "";
+                renderQuestions();
+            });
+
+            function renderQuestions() {
+                questionsList.innerHTML = "";
+                questions.forEach(q => {
+                    const div = document.createElement("div");
+                    div.className = "question-card";
+                    div.innerHTML = `
+        <p><strong>Anonymous asked:</strong> ${q.text}</p>
+        <form onsubmit="submitResponse(event, ${q.id})">
+          <textarea placeholder="Write a response..." required></textarea><br />
+          <button type="submit">Submit Response</button>
+        </form>
+        <div id="responses-${q.id}"></div>
+      `;
+                    questionsList.appendChild(div);
+                    renderResponses(q.id);
+                });
+            }
+
+            function renderResponses(questionId) {
+                const question = questions.find(q => q.id === questionId);
+                const container = document.getElementById(`responses-${questionId}`);
+                container.innerHTML = "";
+                question.responses.forEach((res, i) => {
+                    const div = document.createElement("div");
+                    div.className = "reply-card" + (res.answered ? " answered" : "");
+                    div.innerHTML = `
+        <p>${res.text}</p>
+        <div class="actions">
+          <span>👍 ${res.upvotes}</span>
+          <button onclick="upvote(${questionId}, ${i})">Upvote</button>
+          <button onclick="markAnswered(${questionId}, ${i})">Mark as Answered</button>
+        </div>
+      `;
+                    container.appendChild(div);
+                });
+            }
+
+            window.submitResponse = function (event, questionId) {
+                event.preventDefault();
+                const textarea = event.target.querySelector("textarea");
+                const responseText = textarea.value.trim();
+                if (!responseText) return;
+
+                const question = questions.find(q => q.id === questionId);
+                question.responses.push({ text: responseText, upvotes: 0, answered: false });
+
+                textarea.value = "";
+                renderResponses(questionId);
+            };
+
+            window.upvote = function (questionId, index) {
+                const question = questions.find(q => q.id === questionId);
+                question.responses[index].upvotes++;
+                renderResponses(questionId);
+            };
+
+            window.markAnswered = function (questionId, index) {
+                const question = questions.find(q => q.id === questionId);
+                question.responses.forEach(r => r.answered = false);
+                question.responses[index].answered = true;
+                renderResponses(questionId);
+            };
+        });
+    </script>
+
+</body>
+
+</html>

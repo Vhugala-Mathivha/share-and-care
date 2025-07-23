@@ -1,8 +1,335 @@
-body{
-    font-family:sans-serif;
+html,
+body {
+    height: 100%;
+    margin: 0;
 }
 
-h1{
+body {
+    background-image: url(images/silhouette-group-people-have-fun-top-mountain-near-tent-sunset.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+            
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    /* takes up all space between header and footer */
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    color: #e91e63;
+    /* vibrant pink for warmth */
     text-align: center;
-    font-family: sans-serif;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #555;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: #777;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-style: italic;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+}
+
+.main-div {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.share-story,
+.read-story,
+.advise,
+.volunteer {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 500px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.share-story:hover,
+.read-story:hover,
+.advise:hover,
+.volunteer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.story-info {
+    display: none;
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    width: 100%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    font-size: 16px;
+}
+
+.story-info form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+.story-info label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.story-info input[type="text"],
+.story-info textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    width: 100%;
+    resize: vertical;
+}
+
+.story-info textarea {
+    height: 100px;
+}
+
+#submit {
+    background-color: #B8B8B8;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+#submit:hover {
+    background-color: #414040;
+    color: white;
+}
+
+.read-section {
+    display: none;
+    width: 100%;
+    margin-top: 20px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.tag-filter {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.tag-filter select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.story-card {
+    background: #f4f4f4;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.story-card h4 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.story-card p {
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+.advice-section {
+    display: none;
+    background: #fff;
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+#adviceSection textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    font-size: 15px;
+}
+
+#adviceSection button {
+    margin-top: 10px;
+    background-color: #B8B8B8;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.reply-card {
+    background-color: #f4f4f4;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.reply-card.answered {
+    border: 2px solid #B8B8B8;
+    background-color: #eaffea;
+}
+
+.reply-card .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.reply-card button {
+    background-color: #eee;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.reply-card button:hover {
+    background-color: #ddd;
+}
+
+.question-card,
+.reply-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.answered {
+    border-left: 5px solid rgb(138, 13, 90);
+    background-color: #f0fff0;
+}
+
+textarea {
+    width: 100%;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.actions button {
+    margin-left: 10px;
+}
+
+.volunteer-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.volunteer-section form div {
+    margin-bottom: 15px;
+}
+
+.volunteer-section label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.volunteer-section input[type="text"],
+.volunteer-section input[type="email"],
+.volunteer-section textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    resize: vertical;
+}
+
+.volunteer-section button {
+    background-color: #B8B8B8;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.volunteer-section button:hover {
+    background-color: #B8B8B8;
+}
+
+footer {
+    margin-bottom: 0;
+    /* optional, just no extra margin */
 }

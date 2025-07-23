@@ -1,16 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Share and Care Collective</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <h1>Care and Share Collective</h1>
-    <h2>Welcome to Care and Share Collective</h2>
+    <main>
+    <h1>Share and Care Collective</h1>
+    <h2>Welcome to Share and Care Collective</h2>
     <h3>A safe space to share your story, get support, and help others. All for free.</h3>
+
+    <div class="main-div">
+        <!-- Share Your Story Card -->
+        <div class="share-story" id="shareStoryCard">
+            <p> Share your story</p>
+        </div>
+
+        <!-- Story Form (initially hidden) -->
+        <div class="story-info" id="storyForm">
+            <form>
+                <div>
+                    <label for="name">Your name (or anonymous):</label>
+                    <input type="text" id="name" placeholder="e.g. Jane Doe" />
+                </div>
+
+                <div>
+                    <label>Category:</label><br />
+                    <label><input type="radio" name="tags" value="gbv" /> GBV</label>
+                    <label><input type="radio" name="tags" value="anxiety" /> Anxiety</label>
+                    <label><input type="radio" name="tags" value="bullying" /> Bullying</label>
+                    <label><input type="radio" name="tags" value="heartbreak" /> Heartbreak</label>
+                    <label><input type="radio" name="tags" value="other" /> Other</label>
+                </div>
+
+                <div>
+                    <label for="story">Your story:</label>
+                    <textarea id="story" placeholder="Tell us what you went through..."></textarea>
+                </div>
+
+                <div>
+                    <label for="dealt">How you dealt with it:</label>
+                    <textarea id="dealt" placeholder="What helped you cope or recover?"></textarea>
+                </div>
+
+                <input type="submit" value="Submit" id="submit"/>
+            </form>
+        </div>
+
+        <div class="read-story" id="readStoryCard">
+            <p>Read Stories</p>
+        </div>
+
+
+        <!-- Story Filter + Display Area (initially hidden) -->
+        <div class="read-section" id="readSection">
+            <div class="tag-filter">
+                <label for="tagSelect">Search stories by category:</label>
+                <select id="tagSelect">
+                    <option value="">-- Select a tag --</option>
+                    <option value="grief">Grief</option>
+                    <option value="anxiety">Anxiety</option>
+                    <option value="bullying">Bullying</option>
+                    <option value="heartbreak">Heartbreak</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        
+            <div class="story-results" id="storyResults">
+                <!-- Stories will appear here -->
+            </div>
+
+        </div>
+
+        <div class="advise">
+            <p> Ask for advice</p>
+        </div>
+
+        <!-- Ask for Advice Section (initially hidden) -->
+        <div id="adviceSection" style="display: none;">
+            <form id="questionForm">
+                <label for="questionInput">Ask your question (anonymous):</label><br>
+                <textarea id="questionInput" required></textarea><br>
+                <button type="submit">Submit Question</button>
+            </form>
+        
+            <div id="questionsList"></div>
+        </div>
+
+
+
+        <div class="volunteer">
+            <p> Volunteer</p>
+        </div>
+
+        <!-- Volunteer Form (initially hidden) -->
+        <div class="volunteer-section" id="volunteerSection" style="display:none;">
+            <form id="volunteerForm">
+                <div>
+                    <label for="volunteerName">Name:</label>
+                    <input type="text" id="volunteerName" required />
+                </div>
+                <div>
+                    <label for="volunteerEmail">Email:</label>
+                    <input type="email" id="volunteerEmail" required />
+                </div>
+                <div>
+                    <label for="volunteerSkills">Skills / Interests:</label>
+                    <textarea id="volunteerSkills" placeholder="Tell us what you can help with..." required></textarea>
+                </div>
+                <div>
+                    <label for="volunteerAvailability">Availability:</label>
+                    <input type="text" id="volunteerAvailability" placeholder="e.g., Weekends, evenings" required />
+                </div>
+                <button type="submit">Sign Up to Volunteer</button>
+            </form>
+            <div id="volunteerMessage" style="margin-top: 10px; color: green;"></div>
+        </div>
+
+    </div>
+    </main>
+
+    <footer
+        style="text-align: center; padding: 15px; background: #f0f0f0; margin-top: 40px; font-family: 'Poppins', sans-serif; color: #555;">
+        Coded with 💗 by Vhugala Mathivha. Email:
+        <a href="mailto:vhhugalamathivha@gmail.com"
+            style="color: #ff69b4; text-decoration: none;">vhugalamathivha@gmail.com</a>
+    </footer>
 
     <script src="index.js"></script>
 </body>
+
 </html>
