@@ -385,13 +385,17 @@ volunteerForm.addEventListener("submit", (e) => {
   volunteerMessage.style.color = "pink";
   volunteerMessage.textContent = "Thank you for signing up to volunteer! We will be in touch.";
 
-  volunteerForm.reset();
+  volunteerForm.reset       ``````````````````````````````````````````````````````````````````````````````````````````````````();
 });
 
 const backgrounds = [
+  'images/portrait-happy-young-woman.jpg',
   'images/silhouette-group-people-have-fun-top-mountain-near-tent-sunset.jpg',
   'images/medium-shot-women-hugging-beach.jpg',
-  'images/silhouette-group-people-have-fun-top-mountain-near-tent-sunset.jpg'
+  'images/medium-shot-lesbian-couple-outdoors.jpg',
+  'images/medium-shot-smiley-friends-taking-selfie.jpg',
+  'images/people-office-work-day.jpg',
+  'images/portrait-male-friends-sharing-affectionate-moment-friendship.jpg'
 ]
 
 let i = 0;
