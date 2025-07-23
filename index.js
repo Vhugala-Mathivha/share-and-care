@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dummyStories = [
     {
       name: "Anonymous",
-      tag: "grief",
+      tag: "gbv",
       story: "I lost my mom two years ago...",
       dealt: "Grief support group, journaling"
     },
@@ -387,4 +387,18 @@ volunteerForm.addEventListener("submit", (e) => {
 
   volunteerForm.reset();
 });
+
+const backgrounds = [
+  'images/silhouette-group-people-have-fun-top-mountain-near-tent-sunset.jpg',
+  'images/medium-shot-women-hugging-beach.jpg',
+  'images/silhouette-group-people-have-fun-top-mountain-near-tent-sunset.jpg'
+]
+
+let i = 0;
+setInterval(() => {
+  document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
+  i = (i + 1) % backgrounds.length;
+}, 5000); // changes every 5 seconds
+
+
 
