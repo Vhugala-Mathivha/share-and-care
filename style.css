@@ -6,7 +6,7 @@ body {
 
 
 body {
-   /* background-image: url(images/silhouette-group-people-have-fun-top-mountain-near-tent-sunset.jpg);*/
+   /*background-image: url(images/2093559.jpg);*/
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -20,7 +20,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
 
-    transition: background-image 1s ease-in-out;
+    transition: background-image 0.5s ease-in-out;
 }
 
 
@@ -46,7 +46,7 @@ h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 1.8rem;
-    color: white;
+    color: white !important;
     text-align: center;
     margin-top: 0;
     margin-bottom: 8px;
@@ -56,7 +56,7 @@ h3 {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 1.2rem;
-    color: white;
+    color: white !important;
     text-align: center;
     margin-top: 0;
     margin-bottom: 30px;
@@ -338,3 +338,15 @@ footer {
     margin-bottom: 0;
     /* optional, just no extra margin */
 }
+
+/*.blury {
+    background-color: rgba(255, 255, 255, 0.3);
+    
+    backdrop-filter: blur(2px);
+   
+    -webkit-backdrop-filter: blur(5px);
+   
+    padding: 20px;
+    border-radius: 10px;
+    color: rgb(75, 73, 73);
+}*/

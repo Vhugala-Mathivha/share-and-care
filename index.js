@@ -388,6 +388,7 @@ volunteerForm.addEventListener("submit", (e) => {
   volunteerForm.reset       ``````````````````````````````````````````````````````````````````````````````````````````````````();
 });
 
+// === Smooth Background Image Transition ===
 const backgrounds = [
   'images/portrait-happy-young-woman.jpg',
   'images/silhouette-group-people-have-fun-top-mountain-near-tent-sunset.jpg',
@@ -396,13 +397,52 @@ const backgrounds = [
   'images/medium-shot-smiley-friends-taking-selfie.jpg',
   'images/people-office-work-day.jpg',
   'images/portrait-male-friends-sharing-affectionate-moment-friendship.jpg'
-]
+];
 
-let i = 0;
-setInterval(() => {
-  document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
-  i = (i + 1) % backgrounds.length;
-}, 5000); // changes every 5 seconds
+// Preload all images to avoid flickering
+backgrounds.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
 
+let currentIndex = 0;
+const bg1 = document.createElement('div');
+const bg2 = document.createElement('div');
 
+[bg1, bg2].forEach((bg, index) => {
+  bg.style.position = 'fixed';
+  bg.style.top = '0';
+  bg.style.left = '0';
+  bg.style.width = '100%';
+  bg.style.height = '100%';
+  bg.style.zIndex = '-1';
+  bg.style.backgroundSize = 'cover';
+  bg.style.backgroundPosition = 'center';
+  bg.style.transition = 'opacity 1.5s ease-in-out';
+  bg.style.opacity = index === 0 ? '1' : '0';
+  bg.style.willChange = 'opacity'; // Optimize for smoother animations
+  document.body.appendChild(bg);
+});
 
+// Set initial image
+bg1.style.backgroundImage = `url('${backgrounds[0]}')`;
+let activeLayer = bg1;
+let nextLayer = bg2;
+
+function changeBackground() {
+  currentIndex = (currentIndex + 1) % backgrounds.length;
+  const nextImage = backgrounds[currentIndex];
+
+  // Prepare the next layer
+  nextLayer.style.backgroundImage = `url('${nextImage}')`;
+  nextLayer.style.opacity = '1';
+  activeLayer.style.opacity = '0';
+
+  // Swap layers for the next transition
+  const temp = activeLayer;
+  activeLayer = nextLayer;
+  nextLayer = temp;
+}
+
+// Change image every 5 seconds
+setInterval(changeBackground, 5000);
